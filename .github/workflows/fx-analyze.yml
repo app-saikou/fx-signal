@@ -1,0 +1,47 @@
+name: FX ダウ理論シグナル分析
+
+on:
+  # 平日の日本時間 8時〜23時を30分ごとに実行
+  # UTC基準: 日本時間 - 9時間 (JST = UTC+9)
+  # 月〜金 UTC 23:01〜13:31 = JST 8:01〜22:31
+  schedule:
+    - cron: "1,31 23 * * 0"    # 日曜 UTC 23:01/23:31 = JST 月曜 8:01/8:31
+    - cron: "1,31 0-13 * * 1-5" # 月〜金 UTC 0〜13時台の :01/:31 = JST 9:01〜22:31
+    - cron: "1,31 23 * * 1-4"  # 月〜木 UTC 23:01/23:31 = JST 翌日 8:01/8:31
+
+  # 手動実行（テスト用）
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: "強制通知テスト（通知条件を無視）"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.js のセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: 依存パッケージをインストール
+        run: npm ci
+
+      - name: FX シグナル分析を実行
+        env:
+          TWELVE_DATA_KEY: ${{ secrets.TWELVE_DATA_KEY }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          FORCE_NOTIFY: ${{ github.event.inputs.force_notify || 'false' }}
+        run: npm start
