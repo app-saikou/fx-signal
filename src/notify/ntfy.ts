@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import { EntrySignal } from "../analysis/entrySignal.js";
 import { TrendDirection } from "../analysis/dowTheory.js";
 

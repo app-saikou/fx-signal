@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 
 export type TimeFrame = "M15" | "H1" | "H4" | "D1";
 
