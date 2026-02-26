@@ -3,6 +3,10 @@ import { TrendDirection } from "../analysis/dowTheory.js";
 
 const NTFY_BASE_URL = "https://ntfy.sh";
 
+const PRIORITY_MAP: Record<string, number> = {
+  min: 1, low: 2, default: 3, high: 4, urgent: 5,
+};
+
 export interface NotifyOptions {
   topic: string;
   title: string;
@@ -18,25 +22,18 @@ export async function sendNotification(opts: NotifyOptions): Promise<void> {
   const { topic, title, body, priority = "high", tags = [] } = opts;
   const url = `${NTFY_BASE_URL}/`;
 
-  const payload: Record<string, unknown> = {
+  const payload = {
     topic,
     title,
     message: body,
-    priority,
+    priority: PRIORITY_MAP[priority ?? "high"] ?? 4,
+    ...(tags.length > 0 && { tags }),
   };
-
-  if (tags.length > 0) {
-    payload["tags"] = tags;
-  }
-
-  const jsonBody = JSON.stringify(payload);
-  console.log("📤 送信URL:", url);
-  console.log("📤 送信ペイロード:", jsonBody);
 
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: jsonBody,
+    body: JSON.stringify(payload),
   });
 
   if (!res.ok) {
