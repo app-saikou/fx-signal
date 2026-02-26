@@ -17,22 +17,23 @@ export interface NotifyOptions {
  */
 export async function sendNotification(opts: NotifyOptions): Promise<void> {
   const { topic, title, body, priority = "high", tags = [] } = opts;
-  const url = `${NTFY_BASE_URL}/${encodeURIComponent(topic)}`;
+  const url = `${NTFY_BASE_URL}`;
 
-  const headers: Record<string, string> = {
-    "Content-Type": "text/plain; charset=utf-8",
-    Title: title,
-    Priority: priority,
+  const payload: Record<string, unknown> = {
+    topic,
+    title,
+    message: body,
+    priority,
   };
 
   if (tags.length > 0) {
-    headers["Tags"] = tags.join(",");
+    payload["tags"] = tags;
   }
 
   const res = await fetch(url, {
     method: "POST",
-    headers,
-    body,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
   });
 
   if (!res.ok) {
