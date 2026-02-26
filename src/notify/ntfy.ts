@@ -16,7 +16,7 @@ export interface NotifyOptions {
  */
 export async function sendNotification(opts: NotifyOptions): Promise<void> {
   const { topic, title, body, priority = "high", tags = [] } = opts;
-  const url = `${NTFY_BASE_URL}`;
+  const url = `${NTFY_BASE_URL}/`;
 
   const payload: Record<string, unknown> = {
     topic,
