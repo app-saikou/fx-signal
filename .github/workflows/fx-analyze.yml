@@ -1,4 +1,4 @@
-name: FX ダウ理論シグナル分析
+name: FX Signal Analysis
 
 on:
   # 平日の日本時間 8時〜23時を30分ごとに実行
