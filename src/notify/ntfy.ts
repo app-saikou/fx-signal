@@ -21,7 +21,7 @@ export async function sendNotification(opts: NotifyOptions): Promise<void> {
 
   const headers: Record<string, string> = {
     "Content-Type": "text/plain; charset=utf-8",
-    Title: encodeURIComponent(title),
+    Title: title,
     Priority: priority,
   };
 
