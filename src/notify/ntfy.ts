@@ -29,10 +29,14 @@ export async function sendNotification(opts: NotifyOptions): Promise<void> {
     payload["tags"] = tags;
   }
 
+  const jsonBody = JSON.stringify(payload);
+  console.log("📤 送信URL:", url);
+  console.log("📤 送信ペイロード:", jsonBody);
+
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    body: jsonBody,
   });
 
   if (!res.ok) {
