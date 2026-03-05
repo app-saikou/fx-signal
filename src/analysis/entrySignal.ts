@@ -4,7 +4,7 @@ import { TrendDirection, TrendAnalysis } from "./dowTheory.js";
 const PIP_VALUE = 0.01;
 const SL_BUFFER_PIPS = 5;
 const RR_RATIO = 2;
-const ENTRY_PROXIMITY_PIPS = 10;
+const ENTRY_PROXIMITY_PIPS = 20;
 
 export interface EntrySignal {
   shouldNotify: boolean;

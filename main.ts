@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { fetchCandles } from "./src/api/alphaVantage.js";
-import { analyzeTrend, isTrendAligned } from "./src/analysis/dowTheory.js";
+import { analyzeTrendByMA } from "./src/analysis/dowTheory.js";
 import { calcEntrySignal } from "./src/analysis/entrySignal.js";
 import { notifyEntrySignal, notifyWaiting, notifyStay, notifyError } from "./src/notify/ntfy.js";
 
@@ -49,24 +49,25 @@ async function main() {
     const d1Candles = await fetchCandles("D1", TWELVE_DATA_KEY);
     console.log(`  → ${d1Candles.length}本取得`);
 
-    // トレンド分析
+    // トレンド分析（MA20傾きベース）
     console.log("\n🔍 トレンド分析中...");
-    const d1Analysis = analyzeTrend(d1Candles, 3);
-    const h4Analysis = analyzeTrend(h4Candles, 3);
-    const h1Analysis = analyzeTrend(h1Candles, 3);
-    const m15Analysis = analyzeTrend(m15Candles, 3);
+    const d1Analysis = analyzeTrendByMA(d1Candles);
+    const h4Analysis = analyzeTrendByMA(h4Candles);
+    const h1Analysis = analyzeTrendByMA(h1Candles);
+    const m15Analysis = analyzeTrendByMA(m15Candles);
 
     console.log(`  日足(D1)   : ${d1Analysis.direction} - ${d1Analysis.reason}`);
     console.log(`  4時間足(H4): ${h4Analysis.direction} - ${h4Analysis.reason}`);
     console.log(`  1時間足(H1): ${h1Analysis.direction} - ${h1Analysis.reason}`);
     console.log(`  15分足(M15): ${m15Analysis.direction} - ${m15Analysis.reason}`);
 
-    // 複数時間軸のトレンド一致確認
-    const { aligned, direction } = isTrendAligned(
-      d1Analysis.direction,
-      h4Analysis.direction,
-      h1Analysis.direction
-    );
+    // H4+H1 2軸一致確認
+    const aligned =
+      (h4Analysis.direction === "UP" && h1Analysis.direction === "UP") ||
+      (h4Analysis.direction === "DOWN" && h1Analysis.direction === "DOWN");
+    const direction =
+      h4Analysis.direction === "UP" && h1Analysis.direction === "UP" ? "UP" :
+      h4Analysis.direction === "DOWN" && h1Analysis.direction === "DOWN" ? "DOWN" : "RANGE";
 
     if (!aligned) {
       console.log(

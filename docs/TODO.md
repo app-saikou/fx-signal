@@ -2,6 +2,20 @@
 
 ## 未着手
 
+- [ ] **#5 精度改善: ダウ理論の判定ロジック調整**
+  - lookback パラメータの最適化（現在デフォルト3）
+  - recentHighs/recentLows の取得本数見直し（現在3本）
+  - 3軸一致の厳しさ調整（D1+H4+H1 全一致 or 一部緩和の選択肢）
+  - RANGE 判定が多すぎる場合の対処
+  - 対象: `dowTheory.ts`, `swingPoints.ts`, `entrySignal.ts`
+
+- [ ] **#6 バックテスト: 過去データでシグナル精度を検証**
+  - AlphaVantage の `outputsize=full` で D1/H4/H1/M15 の過去データ取得
+  - 各時点でトレンド判定・エントリーシグナルをシミュレート
+  - 結果集計: シグナル数・勝率・平均 R/R・最大ドローダウン
+  - 結果を CSV/JSON で出力
+  - 新規: `src/backtest/fetchHistorical.ts`, `runBacktest.ts`, `report.ts`
+
 - [x] **#1 M15（15分足）をAPIとトレンド分析に追加**
   - `alphaVantage.ts` に `M15` TimeFrame 追加（interval: `15min`）
   - `main.ts` で M15 データ取得・分析を組み込む
@@ -16,7 +30,7 @@
 - [x] **#3 H1 をトレンド一致チェックに含める**
   - `isTrendAligned` を D1+H4+H1 の3軸一致に修正（#1 と同時対応）
 
-- [ ] **#4 GitHub リポジトリ作成して初回プッシュ**
+- [x] **#4 GitHub リポジトリ作成して初回プッシュ**
   - `app-saikou` アカウントで FX-test リポジトリを新規作成
   - 初回 `git init` → `git remote add` → `git push`
   - Settings → Secrets に `TWELVE_DATA_KEY` と `NTFY_TOPIC` を登録

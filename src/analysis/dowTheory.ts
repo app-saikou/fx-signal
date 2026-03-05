@@ -17,6 +17,8 @@ export interface TrendAnalysis {
   reason: string;
 }
 
+const PIP_VALUE = 0.01;
+
 /**
  * ダウ理論に基づいてトレンド方向を判断する
  * - UP: 高値切り上げ + 安値切り上げ
@@ -25,10 +27,12 @@ export interface TrendAnalysis {
  *
  * @param candles 新しい順のローソク足配列
  * @param lookback スウィングポイント検出の左右比較本数
+ * @param minTrendPips 高値・安値の差分がこのpips未満ならRANGEと判定（デフォルト: 0 = 無効）
  */
 export function analyzeTrend(
   candles: Candle[],
-  lookback = 3
+  lookback = 3,
+  minTrendPips = 0
 ): TrendAnalysis {
   const swings = detectSwingPoints(candles, lookback);
   const recentHighs = getRecentSwingHighs(swings, 3);
@@ -37,7 +41,7 @@ export function analyzeTrend(
   const latestSwingHigh = recentHighs[0] ?? null;
   const latestSwingLow = recentLows[0] ?? null;
 
-  const direction = determineTrend(recentHighs, recentLows);
+  const direction = determineTrend(recentHighs, recentLows, minTrendPips);
   const reason = buildReason(direction, recentHighs, recentLows);
 
   return {
@@ -52,7 +56,8 @@ export function analyzeTrend(
 
 function determineTrend(
   highs: SwingPoint[],
-  lows: SwingPoint[]
+  lows: SwingPoint[],
+  minTrendPips = 0
 ): TrendDirection {
   // 直近2つ以上のスウィングポイントが必要
   if (highs.length < 2 || lows.length < 2) {
@@ -60,19 +65,14 @@ function determineTrend(
   }
 
   // 新しい順なので [0] が最新、[1] がその前
-  const highsRising =
-    highs[0].price > highs[1].price &&
-    (highs.length < 3 || highs[1].price > highs[2].price);
-  const highsFalling =
-    highs[0].price < highs[1].price &&
-    (highs.length < 3 || highs[1].price < highs[2].price);
+  // 直近2つのスウィングポイントで判定（標準的なダウ理論）
+  const highDiff = (highs[0].price - highs[1].price) / PIP_VALUE;
+  const lowDiff = (lows[0].price - lows[1].price) / PIP_VALUE;
 
-  const lowsRising =
-    lows[0].price > lows[1].price &&
-    (lows.length < 3 || lows[1].price > lows[2].price);
-  const lowsFalling =
-    lows[0].price < lows[1].price &&
-    (lows.length < 3 || lows[1].price < lows[2].price);
+  const highsRising = highDiff > minTrendPips;
+  const highsFalling = highDiff < -minTrendPips;
+  const lowsRising = lowDiff > minTrendPips;
+  const lowsFalling = lowDiff < -minTrendPips;
 
   if (highsRising && lowsRising) return "UP";
   if (highsFalling && lowsFalling) return "DOWN";
@@ -103,6 +103,65 @@ function buildReason(
       .join("→")})`;
   }
   return "トレンド不明瞭（レンジ）";
+}
+
+/**
+ * 移動平均線の傾きでトレンドを判定する
+ * - 現在のMA と slopePeriod本前のMA を比較
+ * - スウィングポイントはエントリー価格計算のため引き続き取得
+ *
+ * @param candles 新しい順のローソク足配列
+ * @param maPeriod MA期間（デフォルト: 20）
+ * @param slopePeriod 傾き比較期間（デフォルト: 10）
+ * @param minSlopePips この値以上の傾きでのみUP/DOWN判定（デフォルト: 3）
+ */
+export function analyzeTrendByMA(
+  candles: Candle[],
+  maPeriod = 20,
+  slopePeriod = 10,
+  minSlopePips = 3
+): TrendAnalysis {
+  const swings = detectSwingPoints(candles, 3);
+  const recentHighs = getRecentSwingHighs(swings, 3);
+  const recentLows = getRecentSwingLows(swings, 3);
+  const latestSwingHigh = recentHighs[0] ?? null;
+  const latestSwingLow = recentLows[0] ?? null;
+
+  if (candles.length < maPeriod + slopePeriod) {
+    return {
+      direction: "RANGE",
+      swingHighs: recentHighs,
+      swingLows: recentLows,
+      latestSwingHigh,
+      latestSwingLow,
+      reason: "データ不足",
+    };
+  }
+
+  const currentMA = calcSMA(candles, maPeriod, 0);
+  const prevMA = calcSMA(candles, maPeriod, slopePeriod);
+  const slopePips = (currentMA - prevMA) / PIP_VALUE;
+
+  const direction: TrendDirection =
+    slopePips > minSlopePips ? "UP" :
+    slopePips < -minSlopePips ? "DOWN" : "RANGE";
+
+  return {
+    direction,
+    swingHighs: recentHighs,
+    swingLows: recentLows,
+    latestSwingHigh,
+    latestSwingLow,
+    reason: `MA${maPeriod}傾き: ${slopePips.toFixed(1)}pips → ${direction}`,
+  };
+}
+
+function calcSMA(candles: Candle[], period: number, offset: number): number {
+  let sum = 0;
+  for (let i = offset; i < offset + period; i++) {
+    sum += candles[i].close;
+  }
+  return sum / period;
 }
 
 /**
