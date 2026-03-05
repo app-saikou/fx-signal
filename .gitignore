@@ -2,3 +2,5 @@ node_modules/
 dist/
 .env
 *.log
+data/
+backtest_result_*.csv

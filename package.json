@@ -6,6 +6,8 @@
   "main": "main.ts",
   "scripts": {
     "start": "node --loader ts-node/esm main.ts",
+    "backtest": "node --loader ts-node/esm backtest.ts",
+    "fetchData": "node --loader ts-node/esm fetchData.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
