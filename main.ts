@@ -2,13 +2,16 @@ import "dotenv/config";
 import { fetchCandles } from "./src/api/alphaVantage.js";
 import { analyzeTrendByMA } from "./src/analysis/dowTheory.js";
 import { calcEntrySignal } from "./src/analysis/entrySignal.js";
-import { notifyEntrySignal, notifyWaiting, notifyStay, notifyError } from "./src/notify/ntfy.js";
+import { notifyEntrySignal, notifyStay, notifyError } from "./src/notify/ntfy.js";
+import { shouldSendEntryNotification } from "./src/notify/signalState.js";
 
 const TWELVE_DATA_KEY = process.env.TWELVE_DATA_KEY;
 const NTFY_TOPIC = process.env.NTFY_TOPIC;
 
 // テストモード: FORCE_NOTIFY=true で条件に関わらず通知
 const FORCE_NOTIFY = process.env.FORCE_NOTIFY === "true";
+// 通知無効化: DISABLE_NOTIFY=true で全通知をスキップ
+const DISABLE_NOTIFY = process.env.DISABLE_NOTIFY === "true";
 
 async function main() {
   console.log("=== FX ダウ理論シグナル分析 開始 ===");
@@ -70,10 +73,12 @@ async function main() {
       h4Analysis.direction === "DOWN" && h1Analysis.direction === "DOWN" ? "DOWN" : "RANGE";
 
     if (!aligned) {
-      console.log(
-        "\n⏳ トレンドが一致していません。様子見通知を送信します。"
-      );
-      await notifyStay(d1Analysis.direction, h4Analysis.direction, h1Analysis.direction, NTFY_TOPIC);
+      console.log("\n⏳ トレンドが一致していません。");
+      if (!DISABLE_NOTIFY) {
+        await notifyStay(d1Analysis.direction, h4Analysis.direction, h1Analysis.direction, NTFY_TOPIC);
+      } else {
+        console.log("通知無効（DISABLE_NOTIFY=true）");
+      }
       return;
     }
 
@@ -98,7 +103,11 @@ async function main() {
 
     if (!signal) {
       console.log("\n⏳ エントリーシグナルが算出できませんでした（スウィングポイント不足）。");
-      await notifyStay(d1Analysis.direction, h4Analysis.direction, h1Analysis.direction, NTFY_TOPIC);
+      if (!DISABLE_NOTIFY) {
+        await notifyStay(d1Analysis.direction, h4Analysis.direction, h1Analysis.direction, NTFY_TOPIC);
+      } else {
+        console.log("通知無効（DISABLE_NOTIFY=true）");
+      }
       return;
     }
 
@@ -109,18 +118,17 @@ async function main() {
     console.log(`  距離: ${signal.proximityPips}pips`);
     console.log(`  通知フラグ: ${signal.shouldNotify ? "✅ YES" : "❌ NO"}`);
 
-    // 通知判定（毎回必ず何かしら通知する）
-    if (signal.shouldNotify || FORCE_NOTIFY) {
+    // 通知判定（エッジ検出: 初回接近時またはエントリーポイント変化時のみ通知）
+    if (!DISABLE_NOTIFY && (FORCE_NOTIFY || shouldSendEntryNotification(signal.shouldNotify, signal.entryPrice))) {
       if (FORCE_NOTIFY && !signal.shouldNotify) {
         console.log("\n⚠️ FORCE_NOTIFY=true のため強制通知します");
       }
       console.log("\n📱 エントリー接近通知を送信中...");
       await notifyEntrySignal(signal, NTFY_TOPIC);
+    } else if (DISABLE_NOTIFY) {
+      console.log("通知無効（DISABLE_NOTIFY=true）");
     } else {
-      console.log(
-        `\n📱 待機通知を送信中（エントリーまで ${signal.proximityPips}pips）...`
-      );
-      await notifyWaiting(signal, NTFY_TOPIC);
+      console.log(`通知スキップ（接近中だが既に通知済み or 未接近、距離: ${signal.proximityPips}pips）`);
     }
 
     console.log("\n=== 分析完了 ===");

@@ -44,4 +44,5 @@ jobs:
           TWELVE_DATA_KEY: ${{ secrets.TWELVE_DATA_KEY }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           FORCE_NOTIFY: ${{ github.event.inputs.force_notify || 'false' }}
+          DISABLE_NOTIFY: "true"
         run: npm start

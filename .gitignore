@@ -4,3 +4,4 @@ dist/
 *.log
 data/
 backtest_result_*.csv
+signal-state.json
