@@ -39,6 +39,10 @@ node src/export.mjs out/fx.html --video --dwell 3000
 | ⑥ | 再利用可能なスライドエンジン | [engine/](engine/) / [src/](src/) |
 | ⑦ | AI 生成ルール・プロンプト | [docs/07-ai-generation-rules.md](docs/07-ai-generation-rules.md) / [prompts/deck-system.md](prompts/deck-system.md) / [schema/deck.schema.json](schema/deck.schema.json) |
 
+## 作例
+
+- [examples/fire.deck.json](examples/fire.deck.json) → [fire.html](examples/fire.html) / [fire.mp4](examples/fire.mp4)：「FIREの難しさと対策」約3分の動画（15枚、各スライドの秒数は `duration` で指定）
+
 ## 参照サイトの解析
 
 ```bash

@@ -53,7 +53,8 @@
       }
       const dur = 1200, delay = 200, t0 = performance.now() + delay;
       el.textContent = fmt(0);
-      const tick = (now) => {
+      const tick = () => {
+        const now = performance.now(); // rAF の引数ではなく同じ時計で測る (仮想時計での書き出しと一致させる)
         const t = Math.min(1, Math.max(0, (now - t0) / dur));
         const e = 1 - Math.pow(1 - t, 4); // easeOutQuart
         el.textContent = fmt(target * e);

@@ -81,7 +81,8 @@
         "cite": { "type": "string" },
         "note": { "type": "string", "description": "chart の出典・注記" },
         "steps": { "type": "boolean", "description": "true で要素をクリックごとに段階表示" },
-        "notes": { "type": "string", "description": "スピーカーノート (話す内容)" }
+        "notes": { "type": "string", "description": "スピーカーノート (話す内容)" },
+        "duration": { "type": "number", "description": "動画書き出し時の表示秒数 (省略時は --dwell)" }
       }
     }
   }

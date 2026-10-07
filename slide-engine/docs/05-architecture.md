@@ -118,5 +118,5 @@ slide-engine/
 |---|---|
 | PDF | `?export` を Chromium で開き `page.pdf({ width:1920px, height:1080px })`。テキストは選択可能なまま |
 | PNG | `?export` の各 `.slide` を要素スクリーンショット（1920×1080） |
-| 動画 | Playwright の `recordVideo` で実再生を録画 → ffmpeg で H.264 MP4。`--dwell` で 1 ステップの秒数 |
+| 動画 | **コマ撮り方式**。`page.clock` で時計を止め、1/30 秒ずつ進めながら CSS アニメーション（`getAnimations()` の currentTime）とカウントアップ（rAF）を同期させて毎フレーム撮影 → ffmpeg で H.264（CRF 16）。各スライドの秒数は `duration`、無ければ `--dwell`。実時間録画より文字が鮮明で、マシン負荷でカクつかない。最後 0.8 秒はフェードアウト |
 | 検査 | `?export` で全テキスト要素の矩形を測り、スライド外・フッター衝突・見出しの泣き別れを JSON で返す |

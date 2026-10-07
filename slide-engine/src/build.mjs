@@ -29,7 +29,7 @@ export function renderDeck(deck) {
           ? ""
           : `<footer class="chrome"><span>${esc(deck.footer ?? deck.title ?? "")}</span><span class="num">${String(idx + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}</span></footer>`;
       const notes = s.notes ? `<aside class="notes" hidden>${esc(s.notes)}</aside>` : "";
-      return `<section class="slide l-${s.layout}" data-layout="${s.layout}" aria-label="${idx + 1} / ${total}">${inner}${chrome}${notes}</section>`;
+      return `<section class="slide l-${s.layout}" data-layout="${s.layout}"${s.duration ? ` data-duration="${Number(s.duration)}"` : ""} aria-label="${idx + 1} / ${total}">${inner}${chrome}${notes}</section>`;
     })
     .join("\n");
 

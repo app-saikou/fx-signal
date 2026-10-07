@@ -192,7 +192,7 @@ body {
 .l-statement .stmt-sub { margin-top: 56px; font-size: var(--fs-lead); color: var(--ink-2); max-width: 36em; }
 
 /* bigNumber (数値強調) */
-.l-bigNumber .bn { flex: 1; display: grid; grid-template-columns: auto minmax(560px, 1fr); align-items: end; column-gap: var(--gap-l); }
+.l-bigNumber .bn { flex: 1; padding-bottom: 40px; display: grid; grid-template-columns: auto minmax(560px, 1fr); align-items: end; column-gap: var(--gap-l); }
 .l-bigNumber .bn-value { font-size: var(--bn, 400px); font-weight: 800; line-height: .82; color: var(--accent); }
 .l-bigNumber .bn-unit { font-size: .32em; font-weight: 700; margin-left: 12px; letter-spacing: 0; }
 .l-bigNumber .bn-label { font-size: var(--fs-h2); font-weight: 800; line-height: var(--lh-head); padding-bottom: 20px; }

@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ja" class="" style="--accent:#2f5bff">
+<html lang="ja" class="" style="--accent:#e8590c">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HTML Slide Engine</title>
+<title>FIREの難しさと対策</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>/* ==========================================================================
    Slide Engine — deck.css
@@ -377,273 +377,199 @@ body {
 </head>
 <body>
 <main class="stage">
-<section class="slide l-cover" data-layout="cover" aria-label="1 / 20">
+<section class="slide l-cover" data-layout="cover" data-duration="10" aria-label="1 / 15">
       <svg class="cover-deco" viewBox="0 0 100 100" aria-hidden="true">
         <circle cx="50" cy="50" r="49" fill="none" stroke="var(--accent)" stroke-width=".25" data-anim="fade" style="--i:0"/>
         <circle cx="50" cy="50" r="30" fill="var(--accent-soft)" data-anim="scale" style="--i:1"/>
       </svg>
-      <div><div class="kicker" data-anim="left" style="--i:2">Design System v0.1</div></div>
+      <div><div class="kicker" data-anim="left" style="--i:2">FIRE Strategy</div></div>
       <div>
-        <h1 class="cover-title" data-anim="up" style="--i:3">AIが組む、<br><em class="hl">伝わる</em>HTMLスライド</h1>
-        <p class="cover-sub" data-anim="up" style="--i:4">元資料を渡すだけで、構成・レイアウト選択・HTML生成・書き出しまでを一気通貫に。</p>
+        <h1 class="cover-title" data-anim="up" style="--i:3">FIREの難しさと、<br><em class="hl">崩れない</em>ための対策</h1>
+        <p class="cover-sub" data-anim="up" style="--i:4">経済的自立・早期リタイアを「達成」ではなく「維持」の視点で考える</p>
       </div>
-      <div class="cover-meta" data-anim="fade" style="--i:5"><span>Slide Engine Team</span><span>2026.10</span></div></section>
-<section class="slide l-agenda" data-layout="agenda" aria-label="2 / 20">
-      <header class="head">
-        
-        <h2 class="title" data-anim="up" style="--i:0">Agenda</h2>
-        
-      </header>
-      <div class="body"><ol class="agenda">
-        <li data-anim="up" style="--i:1"><span class="num">01</span>なぜHTMLスライドか</li><li data-anim="up" style="--i:2"><span class="num">02</span>デザインの原則</li><li data-anim="up" style="--i:3"><span class="num">03</span>17のレイアウト</li><li data-anim="up" style="--i:4"><span class="num">04</span>生成パイプライン</li><li data-anim="up" style="--i:5"><span class="num">05</span>書き出しと運用</li>
-      </ol></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">02 / 20</span></footer></section>
-<section class="slide l-section" data-layout="section" aria-label="3 / 20">
+      <div class="cover-meta" data-anim="fade" style="--i:5"><span>3分でわかるFIRE設計</span><span></span></div></section>
+<section class="slide l-statement" data-layout="statement" data-duration="11" aria-label="2 / 15">
+      <div class="kicker" data-anim="left" style="--i:0" style="margin-bottom:48px">Point</div>
+      <h2 class="stmt" data-anim="up" style="--i:1">FIREは、達成より<br><em class="hl">維持</em>のほうが難しい。</h2>
+      <p class="stmt-sub" data-anim="up" style="--i:2">資産を作る期間よりも、資産を取り崩しながら暮らす期間のほうが長くなるからだ。</p><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">02 / 15</span></footer></section>
+<section class="slide l-section" data-layout="section" data-duration="6" aria-label="3 / 15">
       <div class="sec-num num" data-anim="mask" style="--i:0">01</div>
-      <h2 class="sec-title" data-anim="up" style="--i:1">なぜHTMLスライドか</h2>
-      <p class="sec-sub" data-anim="up" style="--i:2">PowerPointでは表現しにくい「動き」と「再現性」</p><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">03 / 20</span></footer></section>
-<section class="slide l-statement" data-layout="statement" aria-label="4 / 20">
-      <div class="kicker" data-anim="left" style="--i:0" style="margin-bottom:48px">Core idea</div>
-      <h2 class="stmt" data-anim="up" style="--i:1">1枚に、<em class="hl">1メッセージ</em>だけ。</h2>
-      <p class="stmt-sub" data-anim="up" style="--i:2">見出しは「テーマ」ではなく「結論」を書く。聴き手が3秒で理解できる量に絞る。</p><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">04 / 20</span></footer></section>
-<section class="slide l-bigNumber" data-layout="bigNumber" aria-label="5 / 20">
+      <h2 class="sec-title" data-anim="up" style="--i:1">なぜ難しいのか</h2>
+      <p class="sec-sub" data-anim="up" style="--i:2">必要な資産額と、4つの壁</p><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">03 / 15</span></footer></section>
+<section class="slide l-bigNumber" data-layout="bigNumber" data-duration="13" aria-label="4 / 15">
       <header class="head">
-        <div class="kicker" data-anim="left" style="--i:0">Canvas</div>
+        <div class="kicker" data-anim="left" style="--i:0">The 4% rule</div>
         
         
       </header>
-      <div class="bn" style="--bn:341px">
-        <div class="bn-value num" data-anim="up" style="--i:1"><span data-count="1920">1920</span><span class="bn-unit">px</span></div>
+      <div class="bn" style="--bn:400px">
+        <div class="bn-value num" data-anim="up" style="--i:1"><span data-count="25">25</span><span class="bn-unit">倍</span></div>
         <div data-anim="up" style="--i:2">
-          <p class="bn-label">固定キャンバスで<br><em class="hl">崩れない</em>レイアウト</p>
-          <p class="bn-sub">1920×1080で組み、表示時は等倍縮小。どの画面でもPowerPointと同じ見え方を保証する。</p>
+          <p class="bn-label">年間支出の<em class="hl">25倍</em>が<br>必要資産の目安</p>
+          <p class="bn-sub">資産の4%ずつ取り崩せば長期間もつ、という米国の研究に基づく「4%ルール」の考え方。</p>
         </div>
-      </div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">05 / 20</span></footer></section>
-<section class="slide l-stats" data-layout="stats" aria-label="6 / 20">
+      </div><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">04 / 15</span></footer></section>
+<section class="slide l-chart" data-layout="chart" data-duration="14" aria-label="5 / 15"><header class="head">
+        
+        <h2 class="title" data-anim="up" style="--i:0">取り崩し率を抑えるほど、必要資産は膨らむ</h2>
+        <p class="lead" data-anim="up" style="--i:1">年間支出300万円の場合の必要資産（万円）</p>
+      </header>
+        <div class="body"><div class="bars">
+          
+            <div class="bar-row is-hl">
+              <div class="bar-label" data-anim="fade" style="--i:2">4.0%</div>
+              <div class="bar-track"><div class="bar-fill" data-anim="grow-x" style="--i:3;--v:0.7500"></div></div>
+              <div class="bar-value num" data-anim="fade" style="--i:4"><span data-count="7500" data-group="1">7,500</span><small>万円</small></div>
+            </div>
+            <div class="bar-row ">
+              <div class="bar-label" data-anim="fade" style="--i:5">3.5%</div>
+              <div class="bar-track"><div class="bar-fill" data-anim="grow-x" style="--i:6;--v:0.8571"></div></div>
+              <div class="bar-value num" data-anim="fade" style="--i:7"><span data-count="8571" data-group="1">8,571</span><small>万円</small></div>
+            </div>
+            <div class="bar-row ">
+              <div class="bar-label" data-anim="fade" style="--i:8">3.0%</div>
+              <div class="bar-track"><div class="bar-fill" data-anim="grow-x" style="--i:9;--v:1.0000"></div></div>
+              <div class="bar-value num" data-anim="fade" style="--i:10"><span data-count="10000" data-group="1">10,000</span><small>万円</small></div>
+            </div>
+          <p class="chart-note">※ 必要資産 = 年間支出 ÷ 取り崩し率 で計算した試算。税・手数料は含まない</p>
+        </div></div><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">05 / 15</span></footer></section>
+<section class="slide l-cards" data-layout="cards" data-duration="16" aria-label="6 / 15">
       <header class="head">
         
-        <h2 class="title" data-anim="up" style="--i:0">依存ゼロで、どこでも動く</h2>
+        <h2 class="title" data-anim="up" style="--i:0">FIREを崩す、4つの壁</h2>
         
       </header>
-      <div class="body"><div class="stats" style="--n:3">
+      <div class="body"><div class="cards" style="--n:4">
         
-          <div class="stat" data-anim="up" style="--i:1">
-            <div class="stat-value num"><span data-count="0">0</span><span class="stat-unit">deps</span></div>
-            <p class="stat-label">実行時の外部ライブラリ。CSSとJSは1ファイルにインライン</p>
-          </div>
-          <div class="stat" data-anim="up" style="--i:2">
-            <div class="stat-value num"><span data-count="17">17</span><span class="stat-unit">種</span></div>
-            <p class="stat-label">目的別のスライドレイアウト</p>
-          </div>
-          <div class="stat" data-anim="up" style="--i:3">
-            <div class="stat-value num"><span data-count="3">3</span><span class="stat-unit">形式</span></div>
-            <p class="stat-label">PDF / PNG / 動画への書き出し</p>
-          </div>
-      </div></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">06 / 20</span></footer></section>
-<section class="slide l-compare" data-layout="compare" aria-label="7 / 20"><header class="head">
+          <article class="card" data-anim="up" style="--i:1">
+            <span class="num">01</span>
+            <h3>暴落のタイミング</h3>
+            <p>退職直後の下落は、取り崩しと重なって資産を大きく削る</p>
+          </article>
+          <article class="card" data-anim="up" style="--i:2">
+            <span class="num">02</span>
+            <h3>インフレ</h3>
+            <p>物価が上がれば、同じ暮らしに必要なお金も毎年増えていく</p>
+          </article>
+          <article class="card" data-anim="up" style="--i:3">
+            <span class="num">03</span>
+            <h3>税・社会保険</h3>
+            <p>退職後も国民健康保険料や国民年金保険料の支払いは続く</p>
+          </article>
+          <article class="card" data-anim="up" style="--i:4">
+            <span class="num">04</span>
+            <h3>心理と孤独</h3>
+            <p>収入ゼロで資産が減る不安と、社会とのつながりの喪失</p>
+          </article>
+      </div></div><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">06 / 15</span></footer></section>
+<section class="slide l-compare" data-layout="compare" data-duration="14" aria-label="7 / 15"><header class="head">
         
-        <h2 class="title" data-anim="up" style="--i:0">テンプレート方式で、品質のばらつきをなくす</h2>
+        <h2 class="title" data-anim="up" style="--i:0">同じ平均リターンでも、<em class="hl">暴落の順番</em>で結果が変わる</h2>
         
       </header>
         <div class="body"><div class="cmp">
           
         <div class="panel before" data-anim="up" style="--i:1">
-          <div class="panel-label">AIにHTMLを直接書かせる</div>
-          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M8 12h8"/></svg><span>毎回デザインが変わる</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M8 12h8"/></svg><span>文字あふれが起きやすい</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M8 12h8"/></svg><span>修正のたびに崩れる</span></li></ul>
+          <div class="panel-label">退職直後に暴落</div>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M8 12h8"/></svg><span>取り崩しと下落が同時に進む</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M8 12h8"/></svg><span>回復期に増やす元本が残らない</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M8 12h8"/></svg><span>資産寿命が大きく縮む</span></li></ul>
         </div>
           <div class="arrow" data-anim="left" style="--i:2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
           
         <div class="panel after" data-anim="scale" style="--i:3">
-          <div class="panel-label">AIはJSONだけを書く</div>
-          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>デザインはエンジンが保証</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>文字数を事前に検証</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>差し替えは1フィールド単位</span></li></ul>
+          <div class="panel-label">退職から何年も後に暴落</div>
+          <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>先に資産が育っている</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>下落の影響を吸収しやすい</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-width="1.5" opacity=".35"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><span>資産寿命への影響が小さい</span></li></ul>
         </div>
-        </div></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">07 / 20</span></footer></section>
-<section class="slide l-section" data-layout="section" aria-label="8 / 20">
+        </div></div><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">07 / 15</span></footer></section>
+<section class="slide l-section" data-layout="section" data-duration="6" aria-label="8 / 15">
       <div class="sec-num num" data-anim="mask" style="--i:0">02</div>
-      <h2 class="sec-title" data-anim="up" style="--i:1">デザインの原則</h2>
-      <footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">08 / 20</span></footer></section>
-<section class="slide l-cards" data-layout="cards" aria-label="9 / 20">
+      <h2 class="sec-title" data-anim="up" style="--i:1">崩れないための対策</h2>
+      <p class="sec-sub" data-anim="up" style="--i:2">収入・現金・取り崩しの3つで守る</p><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">08 / 15</span></footer></section>
+<section class="slide l-cards" data-layout="cards" data-duration="15" aria-label="9 / 15">
       <header class="head">
         
-        <h2 class="title" data-anim="up" style="--i:0">良く見える理由は、3つの「抑制」にある</h2>
-        <p class="lead" data-anim="up" style="--i:1">足すより、削る。装飾ではなく余白・サイズ差・色数でヒエラルキーを作る。</p>
+        <h2 class="title" data-anim="up" style="--i:0">対策は、3つのレイヤーで考える</h2>
+        
       </header>
       <div class="body"><div class="cards" style="--n:3">
         
-          <article class="card" data-anim="up" style="--i:2">
+          <article class="card" data-anim="up" style="--i:1">
             <span class="num">01</span>
-            <h3>余白を恐れない</h3>
-            <p>外周128px。要素間は48/80pxの2段階のみ。詰めないことが高級感になる。</p>
+            <h3>収入を少し残す</h3>
+            <p>好きな仕事で少しでも稼げば、取り崩す額そのものが減る</p>
+          </article>
+          <article class="card" data-anim="up" style="--i:2">
+            <span class="num">02</span>
+            <h3>現金のクッション</h3>
+            <p>生活費1〜2年分を現金で持ち、暴落時は株を売らずに済ませる</p>
           </article>
           <article class="card" data-anim="up" style="--i:3">
-            <span class="num">02</span>
-            <h3>サイズ差を大きく</h3>
-            <p>見出しと本文は2倍以上離す。中途半端な差はノイズとして見える。</p>
-          </article>
-          <article class="card" data-anim="up" style="--i:4">
             <span class="num">03</span>
-            <h3>色は1つだけ</h3>
-            <p>墨・紙・アクセントの3色。アクセントは面積の10%未満に抑える。</p>
+            <h3>取り崩しを柔軟に</h3>
+            <p>下落した年は支出を抑え、取り崩し額を一時的に減らす</p>
           </article>
-      </div></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">09 / 20</span></footer></section>
-<section class="slide l-twoColumn" data-layout="twoColumn" aria-label="10 / 20"><header class="head">
-        
-        <h2 class="title" data-anim="up" style="--i:0">日本語タイポグラフィの要点</h2>
-        
-      </header><div class="body"><div class="cols">
-        <div class="col" data-anim="up" style="--i:1">
-          <h3>見出し</h3>
-          <p>文節で改行し、行頭・行末を揃えすぎない。</p>
-          <ul class="bullets small"><li>word-break: auto-phrase</li><li>text-wrap: balance</li><li>palt で字間を詰める</li></ul>
-        </div>
-        <div class="col" data-anim="up" style="--i:2">
-          <h3>本文</h3>
-          <p>行間は広め、文字は少なめ。</p>
-          <ul class="bullets small"><li>行間 1.7</li><li>最小 24px（投影時 約12pt）</li><li>数字は Inter の等幅数字</li></ul>
-        </div></div></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">10 / 20</span></footer></section>
-<section class="slide l-quote" data-layout="quote" aria-label="11 / 20">
-      <div class="q-mark" data-anim="fade" style="--i:0">“</div>
-      <blockquote class="q-text" data-anim="up" style="--i:1">デザインとは、何を足すかではなく<br><em class="hl">何を捨てるか</em>を決めることだ。</blockquote>
-      <cite class="q-cite" data-anim="fade" style="--i:2">Design principle</cite><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">11 / 20</span></footer></section>
-<section class="slide l-section" data-layout="section" aria-label="12 / 20">
-      <div class="sec-num num" data-anim="mask" style="--i:0">03</div>
-      <h2 class="sec-title" data-anim="up" style="--i:1">生成パイプライン</h2>
-      <footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">12 / 20</span></footer></section>
-<section class="slide l-process" data-layout="process" aria-label="13 / 20">
+      </div></div><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">09 / 15</span></footer></section>
+<section class="slide l-bigNumber" data-layout="bigNumber" data-duration="13" aria-label="10 / 15">
       <header class="head">
+        <div class="kicker" data-anim="left" style="--i:0">Side FIRE</div>
         
-        <h2 class="title" data-anim="up" style="--i:0">元資料からプレゼンまで、5ステップ</h2>
         
       </header>
-      <div class="body"><div class="steps" style="--n:5">
+      <div class="bn" style="--bn:281px">
+        <div class="bn-value num" data-anim="up" style="--i:1"><span data-count="1500" data-group="1">1,500</span><span class="bn-unit">万円</span></div>
+        <div data-anim="up" style="--i:2">
+          <p class="bn-label">月5万円の収入で<br><em class="hl">減らせる</em>必要資産</p>
+          <p class="bn-sub">年60万円 × 25倍 = 1,500万円。サイドFIREは「必要資産」そのものを小さくする。</p>
+        </div>
+      </div><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">10 / 15</span></footer></section>
+<section class="slide l-process" data-layout="process" data-duration="14" aria-label="11 / 15">
+      <header class="head">
         
-          <div class="step" data-anim="up" style="--i:1">
-            <div class="step-line"></div>
-            <div class="step-dot num">1</div>
-            <h3>元資料</h3>
-            <p>テキスト・Markdown・議事録などを入力</p>
-          </div>
+        <h2 class="title" data-anim="up" style="--i:0">暴落に備える「3つの財布」</h2>
+        <p class="lead" data-anim="up" style="--i:1">使うお金と増やすお金を、時間軸で分けて持つ（バケット戦略）</p>
+      </header>
+      <div class="body"><div class="steps" style="--n:3">
+        
           <div class="step" data-anim="up" style="--i:2">
             <div class="step-line"></div>
-            <div class="step-dot num">2</div>
-            <h3>構成作成</h3>
-            <p>結論→根拠→具体例の順に章立て</p>
+            <div class="step-dot num">1</div>
+            <h3>現金</h3>
+            <p>生活費1〜2年分。毎月の生活費はここから使う</p>
           </div>
           <div class="step" data-anim="up" style="--i:3">
             <div class="step-line"></div>
-            <div class="step-dot num">3</div>
-            <h3>レイアウト選択</h3>
-            <p>内容の型から17種を自動で当てはめ</p>
+            <div class="step-dot num">2</div>
+            <h3>安定資産</h3>
+            <p>債券など数年分。減った現金を補充する</p>
           </div>
           <div class="step" data-anim="up" style="--i:4">
             <div class="step-line"></div>
-            <div class="step-dot num">4</div>
-            <h3>検証・生成</h3>
-            <p>文字数と要素数を検証してHTML化</p>
+            <div class="step-dot num">3</div>
+            <h3>株式</h3>
+            <p>残りすべて。長期で増やし、好調な年に利益を移す</p>
           </div>
-          <div class="step" data-anim="up" style="--i:5">
-            <div class="step-line"></div>
-            <div class="step-dot num">5</div>
-            <h3>書き出し</h3>
-            <p>ブラウザ発表 / PDF / PNG / 動画</p>
-          </div>
-      </div></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">13 / 20</span></footer></section>
-<section class="slide l-chart" data-layout="chart" aria-label="14 / 20"><header class="head">
+      </div></div><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">11 / 15</span></footer></section>
+<section class="slide l-table" data-layout="table" data-duration="15" aria-label="12 / 15"><header class="head">
         
-        <h2 class="title" data-anim="up" style="--i:0">1枚あたりの文字量は、少ないほど伝わる</h2>
-        <p class="lead" data-anim="up" style="--i:1">レイアウト別の推奨上限（本文の合計文字数・目安）</p>
-      </header>
-        <div class="body"><div class="bars">
-          
-            <div class="bar-row is-hl">
-              <div class="bar-label" data-anim="fade" style="--i:2">statement</div>
-              <div class="bar-track"><div class="bar-fill" data-anim="grow-x" style="--i:3;--v:0.1294"></div></div>
-              <div class="bar-value num" data-anim="fade" style="--i:4"><span data-count="44">44</span><small>字</small></div>
-            </div>
-            <div class="bar-row ">
-              <div class="bar-label" data-anim="fade" style="--i:5">bigNumber</div>
-              <div class="bar-track"><div class="bar-fill" data-anim="grow-x" style="--i:6;--v:0.3235"></div></div>
-              <div class="bar-value num" data-anim="fade" style="--i:7"><span data-count="110">110</span><small>字</small></div>
-            </div>
-            <div class="bar-row ">
-              <div class="bar-label" data-anim="fade" style="--i:8">cards</div>
-              <div class="bar-track"><div class="bar-fill" data-anim="grow-x" style="--i:9;--v:0.8824"></div></div>
-              <div class="bar-value num" data-anim="fade" style="--i:10"><span data-count="300">300</span><small>字</small></div>
-            </div>
-            <div class="bar-row ">
-              <div class="bar-label" data-anim="fade" style="--i:11">process</div>
-              <div class="bar-track"><div class="bar-fill" data-anim="grow-x" style="--i:12;--v:0.9412"></div></div>
-              <div class="bar-value num" data-anim="fade" style="--i:13"><span data-count="320">320</span><small>字</small></div>
-            </div>
-            <div class="bar-row ">
-              <div class="bar-label" data-anim="fade" style="--i:14">bullets</div>
-              <div class="bar-track"><div class="bar-fill" data-anim="grow-x" style="--i:15;--v:1.0000"></div></div>
-              <div class="bar-value num" data-anim="fade" style="--i:16"><span data-count="340">340</span><small>字</small></div>
-            </div>
-          <p class="chart-note">※ 本エンジンの validate ルールに基づく設計上の目安</p>
-        </div></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">14 / 20</span></footer></section>
-<section class="slide l-timeline" data-layout="timeline" aria-label="15 / 20">
-      <header class="head">
-        
-        <h2 class="title" data-anim="up" style="--i:0">導入ロードマップ</h2>
-        
-      </header>
-      <div class="body"><div class="tl" style="--n:4">
-        
-          <div class="tl-item " data-anim="up" style="--i:1">
-            <div class="tl-date num">Phase 1</div>
-            <h3>エンジン</h3>
-            <p>レイアウト・アニメーション・書き出し</p>
-          </div>
-          <div class="tl-item is-key" data-anim="up" style="--i:2">
-            <div class="tl-date num">Phase 2</div>
-            <h3>AI生成</h3>
-            <p>元資料→JSONの生成と自動修正</p>
-          </div>
-          <div class="tl-item " data-anim="up" style="--i:3">
-            <div class="tl-date num">Phase 3</div>
-            <h3>解析反映</h3>
-            <p>参照デザインの実測値でトークン調整</p>
-          </div>
-          <div class="tl-item " data-anim="up" style="--i:4">
-            <div class="tl-date num">Phase 4</div>
-            <h3>運用</h3>
-            <p>ブランド別テーマとテンプレ追加</p>
-          </div>
-      </div></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">15 / 20</span></footer></section>
-<section class="slide l-table" data-layout="table" aria-label="16 / 20"><header class="head">
-        
-        <h2 class="title" data-anim="up" style="--i:0">書き出し形式の使い分け</h2>
+        <h2 class="title" data-anim="up" style="--i:0">FIREの形は、1つではない</h2>
         
       </header>
         <div class="body"><table>
-          <thead><tr><th>形式</th><th>用途</th><th class="is-hl">アニメーション</th><th>コマンド</th></tr></thead>
-          <tbody><tr data-anim="fade" style="--i:1"><td>HTML</td><td>ライブ発表・共有URL</td><td class="is-hl">あり</td><td>build</td></tr><tr data-anim="fade" style="--i:2"><td>PDF</td><td>配布・印刷</td><td class="is-hl">最終状態で静止</td><td>export --pdf</td></tr><tr data-anim="fade" style="--i:3"><td>PNG</td><td>SNS・資料への貼付</td><td class="is-hl">最終状態で静止</td><td>export --png</td></tr><tr data-anim="fade" style="--i:4"><td>MP4</td><td>動画・SNS投稿</td><td class="is-hl">あり（録画）</td><td>export --video</td></tr></tbody>
-        </table></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">16 / 20</span></footer></section>
-<section class="slide l-imageSplit" data-layout="imageSplit" aria-label="17 / 20">
-      <svg class="split-img" viewBox="0 0 16 9" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ph" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3f4b"/><stop offset="1" stop-color="#151619"/></linearGradient></defs><rect width="16" height="9" fill="url(#ph)"/></svg>
-      <div class="split-body">
-        <div class="kicker" data-anim="left" style="--i:0">Presenter mode</div>
-        <h2 class="title" data-anim="up" style="--i:1">発表中もキーボードだけで</h2>
-        <p data-anim="up" style="--i:2">クリック・スワイプ・ホイールにも対応。</p>
-        <ul class="bullets small"><li data-anim="up" style="--i:3">→ / Space：次へ（ステップ表示）</li><li data-anim="up" style="--i:4">O：スライド一覧</li><li data-anim="up" style="--i:5">F：全画面　B：暗転</li><li data-anim="up" style="--i:6">N：スピーカーノート</li></ul>
-      </div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">17 / 20</span></footer></section>
-<section class="slide l-image" data-layout="image" aria-label="18 / 20">
-      <svg class="img-bg" viewBox="0 0 16 9" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ph" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3f4b"/><stop offset="1" stop-color="#151619"/></linearGradient></defs><rect width="16" height="9" fill="url(#ph)"/></svg>
-      <div class="img-shade"></div>
-      <div class="img-text">
-        <div class="kicker" data-anim="left" style="--i:0" style="color:#fff;margin-bottom:24px">Full bleed</div>
-        <h2 class="img-title" data-anim="up" style="--i:1">写真1枚で、空気をつくる</h2>
-        <p class="img-caption" data-anim="up" style="--i:2">画像全面レイアウトは章の切り替えや感情に訴える場面に。文字は下部に寄せ、グラデーションで可読性を担保。</p>
-      </div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">18 / 20</span></footer></section>
-<section class="slide l-bullets" data-layout="bullets" aria-label="19 / 20"><header class="head">
+          <thead><tr><th>タイプ</th><th class="is-hl">必要資産の目安</th><th>働き方</th><th>向いている人</th></tr></thead>
+          <tbody><tr data-anim="fade" style="--i:1"><td>フルFIRE</td><td class="is-hl">支出 × 25</td><td>働かない</td><td>資産形成を早く終えた人</td></tr><tr data-anim="fade" style="--i:2"><td>サイドFIRE</td><td class="is-hl">(支出 − 収入) × 25</td><td>好きな仕事を少し</td><td><em class="hl">多くの人の現実解</em></td></tr><tr data-anim="fade" style="--i:3"><td>リーンFIRE</td><td class="is-hl">絞った支出 × 25</td><td>働かない</td><td>質素な暮らしが苦にならない人</td></tr></tbody>
+        </table></div><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">12 / 15</span></footer></section>
+<section class="slide l-bullets" data-layout="bullets" data-duration="15" aria-label="13 / 15"><header class="head">
         
-        <h2 class="title" data-anim="up" style="--i:0">次のアクション</h2>
+        <h2 class="title" data-anim="up" style="--i:0">今日からできる、5つの準備</h2>
         
-      </header><div class="body"><ul class="bullets "><li data-anim="up" style="--i:1">参照サイトへのネットワーク許可を追加</li><li data-anim="up" style="--i:2">解析スクリプトで実測値を取得</li><li data-anim="up" style="--i:3"><em class="hl">トークンを実測値で調整</em>して v0.2 へ</li></ul></div><footer class="chrome"><span>HTML Slide Engine — Design System</span><span class="num">19 / 20</span></footer></section>
-<section class="slide l-closing" data-layout="closing" aria-label="20 / 20">
-      <h2 class="cl-title" data-anim="up" style="--i:0">伝わるスライドを、<br>仕組みで量産する。</h2>
-      <p class="cl-sub" data-anim="up" style="--i:1">Thank you.</p>
-      <div class="cl-contact" data-anim="fade" style="--i:2">slide-engine / README.md</div></section>
+      </header><div class="body"><ul class="bullets "><li data-anim="up" style="--i:1">家計の支出を1年分、記録する</li><li data-anim="up" style="--i:2">必要資産を「年間支出 × 25」で試算する</li><li data-anim="up" style="--i:3">NISA・iDeCoで非課税枠を使う</li><li data-anim="up" style="--i:4">FIRE後の生活費で半年暮らしてみる</li><li data-anim="up" style="--i:5">辞めた後に「何をするか」を決めておく</li></ul></div><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">13 / 15</span></footer></section>
+<section class="slide l-statement" data-layout="statement" data-duration="11" aria-label="14 / 15">
+      
+      <h2 class="stmt" data-anim="up" style="--i:0">成否を分けるのは、<br>資産額より<em class="hl">柔軟性</em>。</h2>
+      <p class="stmt-sub" data-anim="up" style="--i:1">働く・使う・取り崩すを状況に合わせて変えられる人ほど、FIREは長続きする。</p><footer class="chrome"><span>FIREの難しさと対策</span><span class="num">14 / 15</span></footer></section>
+<section class="slide l-closing" data-layout="closing" data-duration="12" aria-label="15 / 15">
+      <h2 class="cl-title" data-anim="up" style="--i:0">目指すのは、<br>お金に縛られない人生。</h2>
+      <p class="cl-sub" data-anim="up" style="--i:1">FIREは「辞めること」ではなく「選べる状態」をつくること。</p>
+      <div class="cl-contact" data-anim="fade" style="--i:2">※ 本動画は一般的な情報提供を目的としたもので、投資助言ではありません。</div></section>
 </main>
 <script>/* ==========================================================================
    Slide Engine — deck.js  (依存なし / 単一ファイル)
