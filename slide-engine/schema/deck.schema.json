@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Deck",
+  "description": "Slide Engine のデッキ定義。AI はこの JSON だけを出力し、HTML はエンジンが生成する。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "slides"],
+  "properties": {
+    "title": { "type": "string", "description": "デッキ名 (<title> とフッターに使用)" },
+    "footer": { "type": "string", "description": "フッター左の文字列。省略時は title" },
+    "lang": { "type": "string", "description": "既定 ja" },
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "type": "string", "enum": ["light", "dark"] },
+        "accent": { "type": "string", "description": "アクセント色 (#RRGGBB)。1 色だけ" }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/slide" }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "heading": { "type": "string" },
+        "body": { "type": "string" },
+        "value": { "type": "string", "description": "数値。カンマ・小数可。単位は unit へ" },
+        "unit": { "type": "string" },
+        "label": { "type": "string" },
+        "date": { "type": "string" }
+      }
+    },
+    "column": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string" },
+        "heading": { "type": "string" },
+        "body": { "type": "string" },
+        "items": { "type": "array", "items": { "type": "string" } },
+        "bullets": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "slide": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["layout"],
+      "properties": {
+        "layout": {
+          "type": "string",
+          "enum": ["cover", "agenda", "section", "statement", "bigNumber", "stats", "twoColumn", "compare", "cards", "process", "timeline", "chart", "image", "imageSplit", "quote", "table", "bullets", "closing"]
+        },
+        "kicker": { "type": "string", "description": "見出し上の小ラベル (英字 1-3 語推奨)" },
+        "title": { "type": "string", "description": "結論を言い切る見出し。**語** でアクセント強調、\\n で改行" },
+        "subtitle": { "type": "string" },
+        "lead": { "type": "string", "description": "見出しの補足 1 文" },
+        "text": { "type": "string", "description": "statement / quote の本文" },
+        "sub": { "type": "string" },
+        "value": { "type": "string" },
+        "unit": { "type": "string" },
+        "label": { "type": "string" },
+        "number": { "type": "string", "description": "section の番号 (省略時は自動採番)" },
+        "meta": { "type": "string" },
+        "date": { "type": "string" },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/item" } },
+        "bullets": { "type": "array", "items": { "type": "string" } },
+        "left": { "$ref": "#/$defs/column" },
+        "right": { "$ref": "#/$defs/column" },
+        "columns": { "type": "array", "items": { "type": "string" } },
+        "rows": { "type": "array", "items": { "type": "array", "items": { "type": "string" } } },
+        "highlight": { "type": "integer", "description": "強調する要素/列の 0 始まり index" },
+        "image": { "type": "string", "description": "画像 URL / 相対パス。無ければ省略 (プレースホルダ)" },
+        "alt": { "type": "string" },
+        "caption": { "type": "string" },
+        "body": { "type": "string" },
+        "cite": { "type": "string" },
+        "note": { "type": "string", "description": "chart の出典・注記" },
+        "steps": { "type": "boolean", "description": "true で要素をクリックごとに段階表示" },
+        "notes": { "type": "string", "description": "スピーカーノート (話す内容)" }
+      }
+    }
+  }
+}

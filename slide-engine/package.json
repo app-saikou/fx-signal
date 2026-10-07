@@ -1,0 +1,24 @@
+{
+  "name": "slide-engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "元資料 → 構成 → レイアウト選択 → HTML → 発表 / PDF / PNG / 動画 までを行う HTML スライドエンジン",
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "generate": "node src/generate.mjs",
+    "check": "node src/export.mjs",
+    "export": "node src/export.mjs",
+    "analyze": "node tools/analyze-site.mjs",
+    "sample": "node src/build.mjs examples/sample.deck.json examples/sample.html"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.56.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

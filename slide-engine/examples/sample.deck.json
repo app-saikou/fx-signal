@@ -1,0 +1,152 @@
+{
+  "title": "HTML Slide Engine",
+  "footer": "HTML Slide Engine — Design System",
+  "lang": "ja",
+  "theme": { "mode": "light", "accent": "#2f5bff" },
+  "slides": [
+    {
+      "layout": "cover",
+      "kicker": "Design System v0.1",
+      "title": "AIが組む、\n**伝わる**HTMLスライド",
+      "subtitle": "元資料を渡すだけで、構成・レイアウト選択・HTML生成・書き出しまでを一気通貫に。",
+      "meta": "Slide Engine Team",
+      "date": "2026.10"
+    },
+    {
+      "layout": "agenda",
+      "items": [
+        { "heading": "なぜHTMLスライドか" },
+        { "heading": "デザインの原則" },
+        { "heading": "17のレイアウト" },
+        { "heading": "生成パイプライン" },
+        { "heading": "書き出しと運用" }
+      ]
+    },
+    { "layout": "section", "title": "なぜHTMLスライドか", "subtitle": "PowerPointでは表現しにくい「動き」と「再現性」" },
+    {
+      "layout": "statement",
+      "kicker": "Core idea",
+      "text": "1枚に、**1メッセージ**だけ。",
+      "sub": "見出しは「テーマ」ではなく「結論」を書く。聴き手が3秒で理解できる量に絞る。"
+    },
+    {
+      "layout": "bigNumber",
+      "kicker": "Canvas",
+      "value": "1920",
+      "unit": "px",
+      "label": "固定キャンバスで\n**崩れない**レイアウト",
+      "sub": "1920×1080で組み、表示時は等倍縮小。どの画面でもPowerPointと同じ見え方を保証する。"
+    },
+    {
+      "layout": "stats",
+      "title": "依存ゼロで、どこでも動く",
+      "items": [
+        { "value": "0", "unit": "deps", "label": "実行時の外部ライブラリ。CSSとJSは1ファイルにインライン" },
+        { "value": "17", "unit": "種", "label": "目的別のスライドレイアウト" },
+        { "value": "3", "unit": "形式", "label": "PDF / PNG / 動画への書き出し" }
+      ]
+    },
+    {
+      "layout": "compare",
+      "title": "テンプレート方式で、品質のばらつきをなくす",
+      "left": { "label": "AIにHTMLを直接書かせる", "items": ["毎回デザインが変わる", "文字あふれが起きやすい", "修正のたびに崩れる"] },
+      "right": { "label": "AIはJSONだけを書く", "items": ["デザインはエンジンが保証", "文字数を事前に検証", "差し替えは1フィールド単位"] }
+    },
+    { "layout": "section", "title": "デザインの原則" },
+    {
+      "layout": "cards",
+      "title": "良く見える理由は、3つの「抑制」にある",
+      "lead": "足すより、削る。装飾ではなく余白・サイズ差・色数でヒエラルキーを作る。",
+      "items": [
+        { "heading": "余白を恐れない", "body": "外周128px。要素間は48/80pxの2段階のみ。詰めないことが高級感になる。" },
+        { "heading": "サイズ差を大きく", "body": "見出しと本文は2倍以上離す。中途半端な差はノイズとして見える。" },
+        { "heading": "色は1つだけ", "body": "墨・紙・アクセントの3色。アクセントは面積の10%未満に抑える。" }
+      ]
+    },
+    {
+      "layout": "twoColumn",
+      "title": "日本語タイポグラフィの要点",
+      "left": { "heading": "見出し", "body": "文節で改行し、行頭・行末を揃えすぎない。", "bullets": ["word-break: auto-phrase", "text-wrap: balance", "palt で字間を詰める"] },
+      "right": { "heading": "本文", "body": "行間は広め、文字は少なめ。", "bullets": ["行間 1.7", "最小 24px（投影時 約12pt）", "数字は Inter の等幅数字"] }
+    },
+    {
+      "layout": "quote",
+      "text": "デザインとは、何を足すかではなく\n**何を捨てるか**を決めることだ。",
+      "cite": "Design principle"
+    },
+    { "layout": "section", "title": "生成パイプライン" },
+    {
+      "layout": "process",
+      "title": "元資料からプレゼンまで、5ステップ",
+      "items": [
+        { "heading": "元資料", "body": "テキスト・Markdown・議事録などを入力" },
+        { "heading": "構成作成", "body": "結論→根拠→具体例の順に章立て" },
+        { "heading": "レイアウト選択", "body": "内容の型から17種を自動で当てはめ" },
+        { "heading": "検証・生成", "body": "文字数と要素数を検証してHTML化" },
+        { "heading": "書き出し", "body": "ブラウザ発表 / PDF / PNG / 動画" }
+      ]
+    },
+    {
+      "layout": "chart",
+      "title": "1枚あたりの文字量は、少ないほど伝わる",
+      "lead": "レイアウト別の推奨上限（本文の合計文字数・目安）",
+      "unit": "字",
+      "items": [
+        { "label": "statement", "value": "44" },
+        { "label": "bigNumber", "value": "110" },
+        { "label": "cards", "value": "300" },
+        { "label": "process", "value": "320" },
+        { "label": "bullets", "value": "340" }
+      ],
+      "highlight": 0,
+      "note": "※ 本エンジンの validate ルールに基づく設計上の目安"
+    },
+    {
+      "layout": "timeline",
+      "title": "導入ロードマップ",
+      "items": [
+        { "date": "Phase 1", "heading": "エンジン", "body": "レイアウト・アニメーション・書き出し" },
+        { "date": "Phase 2", "heading": "AI生成", "body": "元資料→JSONの生成と自動修正" },
+        { "date": "Phase 3", "heading": "解析反映", "body": "参照デザインの実測値でトークン調整" },
+        { "date": "Phase 4", "heading": "運用", "body": "ブランド別テーマとテンプレ追加" }
+      ],
+      "highlight": 1
+    },
+    {
+      "layout": "table",
+      "title": "書き出し形式の使い分け",
+      "columns": ["形式", "用途", "アニメーション", "コマンド"],
+      "rows": [
+        ["HTML", "ライブ発表・共有URL", "あり", "build"],
+        ["PDF", "配布・印刷", "最終状態で静止", "export --pdf"],
+        ["PNG", "SNS・資料への貼付", "最終状態で静止", "export --png"],
+        ["MP4", "動画・SNS投稿", "あり（録画）", "export --video"]
+      ],
+      "highlight": 2
+    },
+    {
+      "layout": "imageSplit",
+      "kicker": "Presenter mode",
+      "title": "発表中もキーボードだけで",
+      "body": "クリック・スワイプ・ホイールにも対応。",
+      "bullets": ["→ / Space：次へ（ステップ表示）", "O：スライド一覧", "F：全画面　B：暗転", "N：スピーカーノート"]
+    },
+    {
+      "layout": "image",
+      "kicker": "Full bleed",
+      "title": "写真1枚で、空気をつくる",
+      "caption": "画像全面レイアウトは章の切り替えや感情に訴える場面に。文字は下部に寄せ、グラデーションで可読性を担保。"
+    },
+    {
+      "layout": "bullets",
+      "title": "次のアクション",
+      "bullets": ["参照サイトへのネットワーク許可を追加", "解析スクリプトで実測値を取得", "**トークンを実測値で調整**して v0.2 へ"]
+    },
+    {
+      "layout": "closing",
+      "title": "伝わるスライドを、\n仕組みで量産する。",
+      "subtitle": "Thank you.",
+      "meta": "slide-engine / README.md"
+    }
+  ]
+}
